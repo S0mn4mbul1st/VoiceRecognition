@@ -3,19 +3,18 @@ import wave
 import pyaudio
 
 def record_audio_train():
-	Name =(input("Please Enter Your Name:"))
+	Name = (input("Enter your name, please :"))
 	for count in range(5):
 		FORMAT = pyaudio.paInt16
 		CHANNELS = 1
 		RATE = 44100
 		CHUNK = 512
 		RECORD_SECONDS = 10
-		device_index = 2
 		audio = pyaudio.PyAudio()
-		print("----------------------record device list---------------------")
+		print("------------------Voice Recorder Devices---------------------")
 		info = audio.get_host_api_info_by_index(0)
-		numdevices = info.get('deviceCount')
-		for i in range(0, numdevices):
+		recording_devices = info.get('deviceCount')
+		for i in range(0, recording_devices):
 		        if (audio.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
 		            print("Input Device id ", i, " - ", audio.get_device_info_by_host_api_device_index(0, i).get('name'))
 		print("-------------------------------------------------------------")
@@ -51,12 +50,11 @@ def record_audio_test():
 	RATE = 44100
 	CHUNK = 512
 	RECORD_SECONDS = 10
-	device_index = 2
 	audio = pyaudio.PyAudio()
-	print("----------------------record device list---------------------")
+	print("------------------Voice Recorder Devices---------------------")
 	info = audio.get_host_api_info_by_index(0)
-	numdevices = info.get('deviceCount')
-	for i in range(0, numdevices):
+	recording_devices = info.get('deviceCount')
+	for i in range(0, recording_devices):
 	        if (audio.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
 	            print("Input Device id ", i, " - ", audio.get_device_info_by_host_api_device_index(0, i).get('name'))
 	print("-------------------------------------------------------------")
